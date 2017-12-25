@@ -1,0 +1,198 @@
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:x-driveto.cz:leasing:feed:v1"
+	xmlns="urn:x-driveto.cz:leasing:feed:v1"
+	elementFormDefault="qualified">
+	<xs:element name="leasing">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="carOffers" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence minOccurs="1" maxOccurs="unbounded">
+							<xs:element name="carOffer" type="carOfferType" minOccurs="1" maxOccurs="1"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="carOfferType">
+		<xs:sequence>
+			<xs:element name="partnerCarOfferId" type="xs:string" minOccurs="0"/>
+			<xs:element name="car" type="carType"/>
+			<xs:element name="color" type="xs:string" minOccurs="0"/>
+			<xs:element name="targetLessee" type="targetLesseeType"/>
+			<xs:element name="freeKm" type="freeKmType" minOccurs="0"/>
+			<xs:element name="url" type="xs:anyURI"/>
+			<xs:element name="trimInfo" type="trimInfoType"/>
+			<xs:element name="stockAvailability" type="stockAvailabilityType"/>
+			<xs:element name="listPrice" type="priceType"/>
+			<xs:element name="priceOffers">
+				<xs:complexType>
+					<xs:sequence minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="priceOffer" type="priceOfferType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="carType">
+		<xs:sequence>
+			<xs:element name="carSpecification" type="carSpecificationType" minOccurs="0"/>
+			<xs:element name="drivetoUrl" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:anyURI">
+						<xs:pattern value="https://www\.driveto\.cz/.+"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="carName" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="carSpecificationType">
+		<xs:sequence>
+			<xs:element name="make" type="xs:string"/>
+			<xs:element name="model" type="xs:string"/>
+			<xs:element name="modelLine" type="xs:string"/>
+			<xs:element name="modelLineYear">
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:minInclusive value="1900"/>
+						<xs:maxInclusive value="2200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="trim" type="xs:string"/>
+			<xs:element name="engineVolume" type="xs:float"/>
+			<xs:element name="engineSuffix" type="xs:string"/>
+			<xs:element name="enginePowerKw" type="xs:positiveInteger"/>
+			<xs:element name="engineType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="diesel"/>
+						<xs:enumeration value="electric"/>
+						<xs:enumeration value="gas"/>
+						<xs:enumeration value="hybrid"/>
+						<xs:enumeration value="otto"/>
+						<xs:enumeration value="wankel"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="is4x4" type="xs:boolean"/>
+			<xs:element name="isAutomaticTransmission" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="targetLesseeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="business"/>
+			<xs:enumeration value="anyone"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="freeKmType">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:maxInclusive value="50000"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="trimInfoType">
+		<xs:sequence>
+			<xs:element name="security" type="trimInfoSetType" minOccurs="0"/>
+			<xs:element name="exterior" type="trimInfoSetType" minOccurs="0"/>
+			<xs:element name="interior" type="trimInfoSetType" minOccurs="0"/>
+			<xs:element name="functionality" type="trimInfoSetType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="trimInfoSetType">
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="item" type="NonEmptyString"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="stockAvailabilityType">
+		<xs:sequence>
+			<xs:element name="status">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="in_stock"/>
+						<xs:enumeration value="on_order"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="deliveryDate" type="xs:date" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="priceType">
+		<xs:sequence>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element name="withVat" type="priceValueType"/>
+				<xs:element name="withoutVat" type="priceValueType"/>
+			</xs:choice>
+			<xs:element name="vatRate" type="vatRateType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="priceZeroableType">
+		<xs:sequence>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element name="withVat" type="priceZeroableValueType"/>
+				<xs:element name="withoutVat" type="priceZeroableValueType"/>
+			</xs:choice>
+			<xs:element name="vatRate" type="vatRateType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="priceValueType">
+		<xs:restriction base="xs:decimal">
+			<xs:minExclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="priceZeroableValueType">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="vatRateType">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:enumeration value="21"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="priceOfferType">
+		<xs:sequence>
+			<xs:element name="package" type="NonEmptyString"/>
+			<xs:element name="mileageYearly" type="mileageYearlyType"/>
+			<xs:element name="contractLength" type="contractLengthInMonthsType"/>
+			<xs:element name="price" type="priceType"/>
+			<xs:element name="downPayment" type="priceZeroableType"/>
+			<xs:element name="tradeIn" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="mileageYearlyType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:pattern value=".+000"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="contractLengthInMonthsType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:maxInclusive value="120"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NonEmptyString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:pattern value=".*[^\s].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

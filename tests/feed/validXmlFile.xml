@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<leasing xmlns="urn:x-driveto.cz:leasing:feed:v1">
+	<carOffers>
+		<carOffer>
+			<partnerCarOfferId>123456</partnerCarOfferId>
+			<car>
+				<carSpecification>
+					<make>Škoda</make>
+					<model>Rapid</model>
+					<modelLine>Rapid Spaceback</modelLine>
+					<modelLineYear>2017</modelLineYear>
+					<trim>Ambition Plus</trim>
+					<engineVolume>1.0</engineVolume>
+					<engineSuffix>TSI</engineSuffix>
+					<enginePowerKw>70</enginePowerKw>
+					<engineType>otto</engineType>
+					<is4x4>false</is4x4>
+					<isAutomaticTransmission>true</isAutomaticTransmission>
+				</carSpecification>
+				<drivetoUrl>
+					https://www.driveto.cz/skoda/rapid/rapid-spaceback-2017/1-0-tsi-70-kw-benzinovy-automaticka/ambition-plus/
+				</drivetoUrl>
+				<carName>Škoda Rapid Spaceback 1.0 TSI DSG Ambition Plus</carName>
+			</car>
+			<color>barva podle výrobce</color>
+			<targetLessee>business</targetLessee>
+			<freeKm>5000</freeKm>
+			<url></url>
+			<trimInfo>
+				<security>
+					<item>Ukazatel tlaku v pneumatikách</item>
+					<item>Výstražný trojúhelník a lékárnička</item>
+					<item>BMW Emergency Call</item>
+				</security>
+				<exterior>
+					<item>LED světlomety</item>
+				</exterior>
+				<interior>
+					<item>Navigace</item>
+				</interior>
+				<functionality>
+					<item>Přední a zadní parkovací asistent</item>
+				</functionality>
+			</trimInfo>
+			<stockAvailability>
+				<status>in_stock</status>
+				<deliveryDate>2017-05-31</deliveryDate>
+			</stockAvailability>
+			<listPrice>
+				<withVat>1004692</withVat>
+				<vatRate>21</vatRate>
+			</listPrice>
+			<priceOffers>
+				<priceOffer>
+					<package>Platinový program</package>
+					<mileageYearly>20000</mileageYearly>
+					<contractLength>24</contractLength>
+					<price>
+						<withoutVat>11268</withoutVat>
+						<vatRate>21</vatRate>
+					</price>
+					<downPayment>
+						<withoutVat>0</withoutVat>
+						<vatRate>21</vatRate>
+					</downPayment>
+					<tradeIn>false</tradeIn>
+				</priceOffer>
+				<priceOffer>
+					<package>Platinový program</package>
+					<mileageYearly>20000</mileageYearly>
+					<contractLength>36</contractLength>
+					<price>
+						<withoutVat>10844</withoutVat>
+						<vatRate>21</vatRate>
+					</price>
+					<downPayment>
+						<withoutVat>0</withoutVat>
+						<vatRate>21</vatRate>
+					</downPayment>
+					<tradeIn>false</tradeIn>
+				</priceOffer>
+			</priceOffers>
+		</carOffer>
+		<carOffer>
+			<car>
+				<drivetoUrl>
+					https://www.driveto.cz/volkswagen/touareg/touareg-ii-2014/3-0-v6-tdi-bmt-150-kw-naftovy-4x4-trvaly-automaticka-robotizovana/4motion/
+				</drivetoUrl>
+			</car>
+			<color>barva podle výrobce</color>
+			<targetLessee>business</targetLessee>
+			<freeKm>5000</freeKm>
+			<url></url>
+			<trimInfo>
+				<security>
+					<item>One</item>
+					<item>Two</item>
+					<item>Three</item>
+				</security>
+				<exterior>
+					<item>Foo</item>
+				</exterior>
+				<interior>
+					<item>Foo</item>
+				</interior>
+				<functionality>
+					<item>Foo</item>
+				</functionality>
+			</trimInfo>
+			<stockAvailability>
+				<status>in_stock</status>
+				<deliveryDate>2018-01-01</deliveryDate>
+			</stockAvailability>
+			<listPrice>
+				<withVat>1000</withVat>
+				<vatRate>21</vatRate>
+			</listPrice>
+			<priceOffers>
+				<priceOffer>
+					<package>Platinový program</package>
+					<mileageYearly>20000</mileageYearly>
+					<contractLength>24</contractLength>
+					<price>
+						<withVat>1000</withVat>
+						<vatRate>21</vatRate>
+					</price>
+					<downPayment>
+						<withoutVat>1000</withoutVat>
+						<vatRate>21</vatRate>
+					</downPayment>
+					<tradeIn>true</tradeIn>
+				</priceOffer>
+				<priceOffer>
+					<package>Foo</package>
+					<mileageYearly>10000</mileageYearly>
+					<contractLength>36</contractLength>
+					<price>
+						<withVat>1350.73</withVat>
+						<vatRate>21</vatRate>
+					</price>
+					<downPayment>
+						<withoutVat>0</withoutVat>
+						<vatRate>21</vatRate>
+					</downPayment>
+					<tradeIn>true</tradeIn>
+				</priceOffer>
+			</priceOffers>
+		</carOffer>
+	</carOffers>
+</leasing>

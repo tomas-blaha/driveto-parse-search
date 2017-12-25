@@ -1,0 +1,9 @@
+{block content}
+
+<h1>Import</h1>
+{if $success}
+    <p>Úspěšně dokončeno</p>
+    <p>Importováno: {$inserted} nabídek</p>
+{else}
+    <p>Nastala chyba: {$error_message}</p>
+{/if}

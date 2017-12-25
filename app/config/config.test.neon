@@ -1,0 +1,7 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=localhost;dbname=driveto_mock'
+	user: root
+	password: 

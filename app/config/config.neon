@@ -1,0 +1,23 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	router: App\RouterFactory::createRouter
+	car: App\Model\CarModel
+	offer: App\Model\OfferModel
+	make: App\Model\MakeModel
+	model: App\Model\ModelModel
+	trim: App\Model\TrimModel
+	engine: App\Model\EngineModel
+	import: App\Model\ImportModel(%wwwDir%/source/feed-scheme.xsd)
+	searchForm: App\Form\SearchForm

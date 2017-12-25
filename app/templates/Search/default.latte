@@ -1,0 +1,21 @@
+{block content}
+
+{control searchForm}
+
+{if isset($cars)}
+    {if $cars}
+        {foreach $cars as $car}
+            <div>
+                <h2>{$car->make->name} {$car->model->name}</h2>
+                <ul>
+                    {foreach $car->related('offer')->order('price ASC') as $offer}
+                        <li>{$offer->price|number:2:',':' '} Kč bez DPH</li>
+                        {/foreach}
+                </ul>
+            </div>
+        {/foreach}
+    {else}
+        <p>Nebyla nalezena žádná vozidla</p>
+    {/if}
+
+{/if}
