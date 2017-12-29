@@ -16,10 +16,11 @@ class Base extends TestCase {
      */
     public function setUp() {
         $this->container = require __DIR__ . "/bootstrap.php";
-        $this->connection = new \Nette\Database\Connection("mysql:host=localhost;dbname=driveto_mock", "root", "");
+        /*$this->connection = new \Nette\Database\Connection("mysql:host=localhost;dbname=driveto_mock", "root", "");*
         $storage = new Nette\Caching\Storages\DevNullStorage();
         $structure = new Nette\Database\Structure($this->connection, $storage);
         $this->context = new \Nette\Database\Context($this->connection, $structure);
+         */
     }
 
     /**
