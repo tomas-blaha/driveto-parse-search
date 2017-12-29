@@ -25,7 +25,7 @@
 
     <target name="prepare" depends="cleanup" description="Workspace preparation">
         <echo>project.basedir: ${project.basedir}</echo>
-        <property name="buildOutputPath" value="${project.basedir}/temp/cache"/>
+        <property name="buildOutputPath" value="${project.basedir}/temp"/>
         <echo>buildOutputPath: ${buildOutputPath}</echo>
     </target>
 
@@ -36,6 +36,6 @@
     </target>
 
 
-    <target name="build" depends="prepare, varDump, lint, phpcs, phpstan, phpUnitTests" description="Meta target"/>
+    <target name="build" depends="prepare" description="Meta target"/>
 
 </project>
