@@ -13,4 +13,4 @@ install:
   - composer install --no-interaction --prefer-source
   
 script:
-  - ./vendor/bin/teste -s -c ./tests/php.ini ./tests
+  - ./vendor/bin/tester -s -c ./tests/php.ini ./tests
