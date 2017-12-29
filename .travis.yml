@@ -13,3 +13,4 @@ install:
   
 script:
     ./vendor/bin/phpunit
+    ./vendor/phing/phing/bin/phing -f build.xml
