@@ -12,4 +12,4 @@ install:
   - composer install --no-interaction --prefer-source
   
 script:
-    ./vendor/phpunit/phpunit/phpunit
+    ./vendor/bin/phpunit
