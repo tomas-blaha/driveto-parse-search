@@ -27,4 +27,4 @@ class CarTest extends Base {
 
 }
 
-(new CarTest)->run();
+//(new CarTest)->run();

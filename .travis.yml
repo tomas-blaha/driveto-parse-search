@@ -6,6 +6,18 @@ php:
   - 7.0
   - 7.1
 
-before_script:
+env:
+  - TESTER_PHP_BIN="php-cgi"
+
+before_install:
   - composer self-update
-  - composer install
+  
+install:
+  - composer install --no-interaction --prefer-source
+  
+script:
+  - ./vendor/bin/tester -p $TESTER_PHP_BIN -s -c ./tests/php.ini ./tests
+  
+after_failure:
+  # Vytiskne obsah souborů *.actual
+  - for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
