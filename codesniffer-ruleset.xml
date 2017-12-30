@@ -14,7 +14,12 @@
         </properties>
         <exclude name="Generic.Files.LowercasedFilename.NotFound"/>
         <exclude name="Generic.Files.EndFileNoNewline.Found"/>
-    </rule
+    </rule>
+    <rule ref="Generic.PHP">
+        <exclude name="Generic.PHP.UpperCaseConstant.Found"/>
+        <exclude name="Generic.PHP.ClosingPHPTag.NotFound"/>
+        <exclude name="Generic.PHP.NoSilencedErrors.Discouraged"/> <!-- unfortunately, the only way to make native SoapClient work correctly -->
+    </rule>
     <rule ref="Generic.NamingConventions"/>
     <rule ref="Generic.Functions">
         <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine"/>
