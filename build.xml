@@ -36,7 +36,7 @@
     </target>
 
     <target name="phpUnitTests" description="Run unit tests">
-        <exec command="php vendor/phpunit/phpunit/phpunit --configuration=phpunit.xml TestTest" passthru="true" checkreturn="true"/>
+        <exec command="php vendor/phpunit/phpunit/phpunit --configuration=phpunit.xml  --testsuite=TestTest" passthru="true" checkreturn="true"/>
     </target>
 
     <target name="build" depends="prepare, lint, phpUnitTests" description="Meta target"/>
