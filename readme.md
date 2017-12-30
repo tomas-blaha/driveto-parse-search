@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tomas-blaha/driveto-parse-search.svg?branch=master)](https://travis-ci.org/tomas-blaha/driveto-parse-search)
+
 Driveto DEMO parser a "searcher"
 =================
 

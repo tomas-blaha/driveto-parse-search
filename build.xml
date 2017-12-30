@@ -35,7 +35,11 @@
     <target name="varDump" depends="prepare" description="Check for forgotten var_dumps">
         <exec command="./vendor/bin/var-dump-check --exclude vendor ." passthru="true" checkreturn="true"/>
     </target>
+    
+    <target name="phpcs" depends="prepare" description="PHP_CodeSniffer checks">
+        <exec command="php vendor/squizlabs/php_codesniffer/bin/phpcs --standard=${project.basedir}/codesniffer-ruleset.xml --report=checkstyle --report-file=${buildOutputPath}/phpcs-checkstyle-outfile.xml app tests" passthru="true" checkreturn="true"/>
+    </target>
 
-    <target name="build" depends="prepare, lint, phpUnitTests, varDump" description="Meta target"/>
+    <target name="build" depends="prepare, lint, phpUnitTests, varDump, phpcs" description="Meta target"/>
 
 </project>
