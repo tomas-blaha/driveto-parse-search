@@ -15,15 +15,8 @@
         <include name="**/*.php"/>
     </fileset>
 
-    <target name="cleanup" description="Workspace cleanup">
-        <delete>
-            <fileset dir="${project.basedir}/temp/cache">
-                <include name="**/*"/>
-            </fileset>
-        </delete>
-    </target>
 
-    <target name="prepare" depends="cleanup" description="Workspace preparation">
+    <target name="prepare" description="Workspace preparation">
         <echo>project.basedir: ${project.basedir}</echo>
         <property name="buildOutputPath" value="${project.basedir}/temp"/>
         <echo>buildOutputPath: ${buildOutputPath}</echo>
@@ -31,14 +24,18 @@
 
     <target name="lint" depends="prepare" description="PHP Lint check">
         <phplint haltonfailure="true" level="debug" deprecatedAsError="true" tofile="${buildOutputPath}/phplint-outfile.txt">
-            <fileset refid="src"/>
+            <fileset refid="/"/>
         </phplint>
     </target>
 
     <target name="phpUnitTests" description="Run unit tests">
         <exec command="php vendor/phpunit/phpunit/phpunit --configuration=phpunit.xml  --testsuite=TestTest" passthru="true" checkreturn="true"/>
     </target>
+    
+    <target name="varDump" depends="prepare" description="Check for forgotten var_dumps">
+        <exec command="${project.basedir}/vendor/bin/var-dump-check --exclude vendor ." passthru="true" checkreturn="true"/>
+    </target>
 
-    <target name="build" depends="prepare, lint, phpUnitTests" description="Meta target"/>
+    <target name="build" depends="prepare, lint, phpUnitTests, varDump" description="Meta target"/>
 
 </project>
