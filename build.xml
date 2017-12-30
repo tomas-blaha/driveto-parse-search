@@ -24,7 +24,7 @@
 
     <target name="lint" depends="prepare" description="PHP Lint check">
         <phplint haltonfailure="true" level="debug" deprecatedAsError="true" tofile="${buildOutputPath}/phplint-outfile.txt">
-            <fileset refid="/"/>
+            <fileset refid="app"/>
         </phplint>
     </target>
 
