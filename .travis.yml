@@ -12,5 +12,5 @@ install:
   - composer install --no-interaction --prefer-source
   
 script:
-    vendor/bin/phpunit
-    vendor/phing/phing/bin/phing -f build.xml
+  - vendor/bin/phpunit
+  - vendor/phing/phing/bin/phing -f build.xml
