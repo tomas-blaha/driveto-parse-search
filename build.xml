@@ -33,7 +33,7 @@
     </target>
     
     <target name="varDump" depends="prepare" description="Check for forgotten var_dumps">
-        <exec command="./vendor/bin/var-dump-check ." passthru="true" checkreturn="true"/>
+        <exec command="./vendor/bin/var-dump-check --exclude vendor ." passthru="true" checkreturn="true"/>
     </target>
 
     <target name="build" depends="prepare, lint, phpUnitTests, varDump" description="Meta target"/>
